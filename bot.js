@@ -121,7 +121,7 @@ reply_markup: {
 // Use Jupiter price API or price.jup.ag
 async function getTokenPriceUSD(mint) {
   try {
-    const url = https://price.jup.ag/v4/price?ids=${mint};
+    const url = `https://price.jup.ag/v4/price?ids=${mint}`;
     const res = await axios.get(url, { timeout: 8000 });
     const data = res.data?.data?.[mint];
     return data?.price || null;
@@ -309,6 +309,7 @@ bot.onText(/\/admin_report/, async (msg) => {
 (async () => {
   await bot.sendMessage(TG_ADMIN_CHAT_ID, "Solana Smart Trader v1.6 (controller) online. Use /start in your chat to open menu.");
 })();
+
 
 
 
