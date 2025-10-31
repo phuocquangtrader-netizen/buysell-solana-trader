@@ -247,7 +247,7 @@ bot.on("callback_query", async (q) => {
           return bot.sendMessage(tgId, "❌ Invalid token mint. Try again.");
         }
         // store temporary active token for this chat
-        await bot.sendMessage(tgId, ✅ Token detected: ${tokenMint}\nChoose buy amount:, {
+        await bot.sendMessage(tgId, `✅ Token detected: ${tokenMint}\nChoose buy amount:`, {
           reply_markup: {
             inline_keyboard: [
               [{ text: "💸 Buy 0.5 SOL", callback_data: buytoken_${tokenMint}_0.5 }, { text: "💰 Buy 1 SOL", callback_data: buytoken_${tokenMint}_1 }],
@@ -309,6 +309,7 @@ bot.onText(/\/admin_report/, async (msg) => {
 (async () => {
   await bot.sendMessage(TG_ADMIN_CHAT_ID, "Solana Smart Trader v1.6 (controller) online. Use /start in your chat to open menu.");
 })();
+
 
 
 
