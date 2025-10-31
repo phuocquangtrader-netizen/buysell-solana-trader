@@ -98,12 +98,10 @@ function mainMenu(connected) {
       { text: "💰 Buy 1 SOL", callback_data: "buy_1" }
     ],
     [
-      { text: "⚙️ Custom Amount", callback_data: "buy_custom" },
-      { text: "🔍 View Token", callback_data: "view_token" }
-    ],
-    [{ text: "📊 My Trades", callback_data: "my_trades" }],
-    [{ text: `$connected ? "❌ Disconnect Wallet" : "⚪ No Wallet Connected"}`, callback_data: "disconnect_wallet" }
-  ];
+      { text: "⚙ Custom Amount", callback_data: `buytoken_${tokenMint}_custom` },
+{ text: "🔍 View Token on Solscan", url: `https://solscan.io/token/${tokenMint}` },
+[{ text: "📊 My Trades", callback_data: "my_trades" }],
+[{ text: `${connected ? "❌ Disconnect Wallet" : "⭕ No Wallet Connected"}`, callback_data: "disconnect_wallet" }]
   return { reply_markup: { inline_keyboard: rows } };
 }
 
@@ -309,6 +307,7 @@ bot.onText(/\/admin_report/, async (msg) => {
 (async () => {
   await bot.sendMessage(TG_ADMIN_CHAT_ID, "Solana Smart Trader v1.6 (controller) online. Use /start in your chat to open menu.");
 })();
+
 
 
 
