@@ -148,7 +148,7 @@ async function startTracking(trade) {
 
         // send status to user
         const holdMin = Math.round((Date.now() - trade.entryTime) / 60000);
-        const msg = 💹 ${trade.tokenMint}\n📈 ${profitPct?.toFixed(1) || "?"}% | Hold: ${holdMin}m\n🔝 Peak: ${trade.highest?.toFixed(6) || "?"} | Drawdown: ${drawdownFromPeak?.toFixed(1) || "?"}%\nQty(raw): ${trade.qtyRaw};
+        const msg = `💹 ${trade.tokenMint}\n📈 ${profitPct?.toFixed(1) || "?"}% | Hold: ${holdMin}m\n🔝 Peak: ${trade.highest?.toFixed(6) || "?"} | Drawdown: ${drawdownFromPeak?.toFixed(1) || "?"}%\nQty(raw): ${trade.qtyRaw}`;
         await bot.sendMessage(trade.user, msg, tradeKeyboard(trade.id));
 
         // check auto stoploss / trailing
@@ -309,6 +309,7 @@ bot.onText(/\/admin_report/, async (msg) => {
 (async () => {
   await bot.sendMessage(TG_ADMIN_CHAT_ID, "Solana Smart Trader v1.6 (controller) online. Use /start in your chat to open menu.");
 })();
+
 
 
 
