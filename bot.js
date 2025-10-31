@@ -215,7 +215,7 @@ bot.on("callback_query", async (q) => {
     if (data === "connect_phantom") {
       // Provide instructions + deep link template
       const dappUrl = process.env.PHANTOM_DEEP_LINK_APP_URL || "https://example-dapp.local";
-      const msg = 📱 To connect Phantom on mobile: open Phantom on the SAME phone where Telegram is running.\n\nPress the button below to open Phantom Connect flow (you must approve inside Phantom).;
+      const msg =  `📱 To connect Phantom on mobile: open Phantom on the SAME phone where Telegram is running.\n\nPress the button below to open Phantom Connect flow (you must approve inside Phantom).`;
       // NOTE: creating a true deep-link requires a dapp encryption key & redirect; here we provide an instructions button linking to a small doc or your phantom-connect webapp
       await bot.sendMessage(tgId, msg, {
         reply_markup: {
@@ -309,6 +309,7 @@ bot.onText(/\/admin_report/, async (msg) => {
 (async () => {
   await bot.sendMessage(TG_ADMIN_CHAT_ID, "Solana Smart Trader v1.6 (controller) online. Use /start in your chat to open menu.");
 })();
+
 
 
 
