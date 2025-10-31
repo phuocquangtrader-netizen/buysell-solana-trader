@@ -19,8 +19,8 @@ import { PublicKey } from "@solana/web3.js";
 
 dotenv.config();
 
-const TG_BOT_TOKEN = 7972527034:AAHXO8QzZSD8VEp51cO5hQnGRRCuXqKFywo;
-const TG_ADMIN_CHAT_ID = 6768306910;
+const TG_BOT_TOKEN =  process.env.BOT_TOKEN;
+const TG_ADMIN_CHAT_ID =  process.env.CHAT_ID;
 const RPC_URL = process.env.RPC_URL || "https://api.mainnet-beta.solana.com";
 
 const TRACK_INTERVAL_SEC = Number(process.env.TRACK_INTERVAL_SEC || 120);
@@ -309,3 +309,4 @@ bot.onText(/\/admin_report/, async (msg) => {
 (async () => {
   await bot.sendMessage(TG_ADMIN_CHAT_ID, "Solana Smart Trader v1.6 (controller) online. Use /start in your chat to open menu.");
 })();
+
