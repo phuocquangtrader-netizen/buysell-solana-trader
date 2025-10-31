@@ -80,7 +80,7 @@ function isValidSolanaAddress(s) {
 }
 
 function genTradeId(tokenMint) {
-  return trade_${tokenMint}_${Date.now()};
+  return `trade_${tokenMint}_${Date.now()}`;
 }
 
 function userByTelegramId(tgId) {
@@ -309,4 +309,5 @@ bot.onText(/\/admin_report/, async (msg) => {
 (async () => {
   await bot.sendMessage(TG_ADMIN_CHAT_ID, "Solana Smart Trader v1.6 (controller) online. Use /start in your chat to open menu.");
 })();
+
 
