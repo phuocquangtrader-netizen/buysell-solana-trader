@@ -91,30 +91,41 @@ function userByTelegramId(tgId) {
 // === Inline keyboards & menus ===
 function mainMenu(connected) {
   const rows = [
-    [{ text: "🔗 Connect Phantom", callback_data: "connect_phantom" }],
-    [{ text: "🪪 Paste Token Address", callback_data: "paste_token" }],
+    [
+      { text: "🔗 Connect Phantom", callback_data: "connect_phantom" },
+      { text: "📋 Paste Token Address", callback_data: "paste_token" }
+    ],
     [
       { text: "💸 Buy 0.5 SOL", callback_data: "buy_0.5" },
       { text: "💰 Buy 1 SOL", callback_data: "buy_1" }
     ],
     [
       { text: "⚙ Custom Amount", callback_data: `buytoken_${tokenMint}_custom` },
-{ text: "🔍 View Token on Solscan", url: `https://solscan.io/token/${tokenMint}` },
-[{ text: "📊 My Trades", callback_data: "my_trades" }],
-[{ text: `${connected ? "❌ Disconnect Wallet" : "⭕ No Wallet Connected"}`, callback_data: "disconnect_wallet" }]
+      { text: "🔍 View Token on Solscan", url: `https://solscan.io/token/${tokenMint}` }
+    ],
+    [
+      { text: "📊 My Trades", callback_data: "my_trades" }
+    ],
+    [
+      { text: `${connected ? "❌ Disconnect Wallet" : "⭕ No Wallet Connected"}`, callback_data: "disconnect_wallet" }
+    ]
+  ];
+
   return { reply_markup: { inline_keyboard: rows } };
 }
 
 function tradeKeyboard(tradeId) {
   return {
-reply_markup: {
+    reply_markup: {
       inline_keyboard: [
-        [{ text: "🔴 SELL NOW", callback_data: `sell_${tradeId}` }, { text: "🔄 REFRESH", callback_data: `refresh_${tradeId}` }]
+        [
+          { text: "🔴 SELL NOW", callback_data: sell_${tradeId} },
+          { text: "🔵 CANCEL", callback_data: cancel_${tradeId} }
+        ]
       ]
     }
   };
 }
-
 // === Price & token helpers ===
 // Use Jupiter price API or price.jup.ag
 async function getTokenPriceUSD(mint) {
@@ -307,6 +318,7 @@ bot.onText(/\/admin_report/, async (msg) => {
 (async () => {
   await bot.sendMessage(TG_ADMIN_CHAT_ID, "Solana Smart Trader v1.6 (controller) online. Use /start in your chat to open menu.");
 })();
+
 
 
 
