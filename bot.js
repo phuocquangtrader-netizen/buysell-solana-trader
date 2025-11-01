@@ -119,8 +119,8 @@ function tradeKeyboard(tradeId) {
     reply_markup: {
       inline_keyboard: [
         [
-          { text: "🔴 SELL NOW", callback_data: sell_${tradeId} },
-          { text: "🔵 CANCEL", callback_data: cancel_${tradeId} }
+          { text: "🔴 SELL NOW", callback_data: `sell_${tradeId}` },
+          { text: "🔵 CANCEL", callback_data: `cancel_${tradeId}` }
         ]
       ]
     }
@@ -318,6 +318,7 @@ bot.onText(/\/admin_report/, async (msg) => {
 (async () => {
   await bot.sendMessage(TG_ADMIN_CHAT_ID, "Solana Smart Trader v1.6 (controller) online. Use /start in your chat to open menu.");
 })();
+
 
 
 
